@@ -6,9 +6,9 @@ Use the following commands to quickly verify each of your four endpoints against
 
 ## Base URL
 
-\`\`\`
+```
 https://gecko-test.bountyblok.io
-\`\`\`
+```
 
 ---
 
@@ -16,32 +16,34 @@ https://gecko-test.bountyblok.io
 
 Fetch the latest WAX block number and its Unix timestamp.
 
-\`\`\`bash
+```bash
 curl -s "https://gecko-test.bountyblok.io/latest-block" | jq .
-\`\`\`
+```
 
 **Expected response format:**
-\`\`\`json
+
+```json
 {
   "block": {
     "blockNumber": 373909916,
     "blockTimestamp": 1748433738
   }
 }
-\`\`\`
+```
 
 ---
 
 ## 2. GET /asset
 
-Retrieve metadata for an on-chain token. Replace \<contract\>:\<SYMBOL\> as needed. Example for the main WAX token:
+Retrieve metadata for an on-chain token. Replace `<contract>:<SYMBOL>` as needed. Example for the main WAX token:
 
-\`\`\`bash
+```bash
 curl -s "https://gecko-test.bountyblok.io/asset?id=eosio.token:WAX" | jq .
-\`\`\`
+```
 
 **Expected response format:**
-\`\`\`json
+
+```json
 {
   "asset": {
     "id": "eosio.token",
@@ -51,20 +53,21 @@ curl -s "https://gecko-test.bountyblok.io/asset?id=eosio.token:WAX" | jq .
     "totalSupply": 4395032909.800781
   }
 }
-\`\`\`
+```
 
 ---
 
 ## 3. GET /pair
 
-Fetch details for an Alcor pool. Use one of the \`pairId\`s you see in your /events output. Example with \`6559\`:
+Fetch details for an Alcor pool. Use one of the `pairId`s you see in your /events output. Example with `6559`:
 
-\`\`\`bash
+```bash
 curl -s "https://gecko-test.bountyblok.io/pair?id=swap.alcor:6559" | jq .
-\`\`\`
+```
 
 **Expected response format:**
-\`\`\`json
+
+```json
 {
   "pair": {
     "id": "swap.alcor:6559",
@@ -74,7 +77,7 @@ curl -s "https://gecko-test.bountyblok.io/pair?id=swap.alcor:6559" | jq .
     "feeBps": 3000
   }
 }
-\`\`\`
+```
 
 ---
 
@@ -82,12 +85,13 @@ curl -s "https://gecko-test.bountyblok.io/pair?id=swap.alcor:6559" | jq .
 
 List all swap/join/exit events between two block numbers. Example:
 
-\`\`\`bash
+```bash
 curl -s "https://gecko-test.bountyblok.io/events?fromBlock=373901885&toBlock=373901885" | jq .
-\`\`\`
+```
 
 **Expected response format:**
-\`\`\`json
+
+```json
 {
   "events": [
     {
@@ -108,7 +112,7 @@ curl -s "https://gecko-test.bountyblok.io/events?fromBlock=373901885&toBlock=373
     }
   ]
 }
-\`\`\`
+```
 
 ---
 
@@ -116,6 +120,8 @@ curl -s "https://gecko-test.bountyblok.io/events?fromBlock=373901885&toBlock=373
 
 All endpoints return **HTTP 502** if an upstream call (WAX RPC or Hyperion) fails:
 
-\`\`\`json
+```json
 { "error": "<detailed error message>" }
-\`\`\`
+```
+
+---
