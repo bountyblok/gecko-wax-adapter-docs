@@ -1,13 +1,13 @@
 # Gecko WAX Adapter Quick Test Guide
 
-Use the following commands to quickly verify each of your four endpoints against the test instance at **gecko-test.bountyblok.io**.
+Use the following commands to quickly verify each of your four endpoints against the test instance at **gecko-api.wax.io**.
 
 ---
 
 ## Base URL
 
 ```
-https://gecko-test.bountyblok.io
+https://gecko-api.wax.io
 ```
 
 ---
@@ -17,7 +17,7 @@ https://gecko-test.bountyblok.io
 Fetch the latest WAX block number and its Unix timestamp.
 
 ```bash
-curl -s "https://gecko-test.bountyblok.io/latest-block" | jq .
+curl -s "https://gecko-api.wax.io/latest-block" | jq .
 ```
 
 **Expected response format:**
@@ -38,7 +38,7 @@ curl -s "https://gecko-test.bountyblok.io/latest-block" | jq .
 Retrieve metadata for an on-chain token. Replace `<contract>:<SYMBOL>` as needed. Example for the main WAX token:
 
 ```bash
-curl -s "https://gecko-test.bountyblok.io/asset?id=eosio.token:WAX" | jq .
+curl -s "https://gecko-api.wax.io/asset?id=eosio.token:WAX" | jq .
 ```
 
 **Expected response format:**
@@ -62,7 +62,7 @@ curl -s "https://gecko-test.bountyblok.io/asset?id=eosio.token:WAX" | jq .
 Fetch details for an Alcor pool. Use one of the `pairId`s you see in your /events output. Example with `6559`:
 
 ```bash
-curl -s "https://gecko-test.bountyblok.io/pair?id=swap.alcor:6559" | jq .
+curl -s "https://gecko-api.wax.io/pair?id=swap.alcor:6559" | jq .
 ```
 
 **Expected response format:**
@@ -86,7 +86,7 @@ curl -s "https://gecko-test.bountyblok.io/pair?id=swap.alcor:6559" | jq .
 List all swap/join/exit events between two block numbers. Example:
 
 ```bash
-curl -s "https://gecko-test.bountyblok.io/events?fromBlock=373901885&toBlock=373901885" | jq .
+curl -s "https://gecko-api.wax.io/events?fromBlock=373901885&toBlock=373901885" | jq .
 ```
 
 **Expected response format:**
